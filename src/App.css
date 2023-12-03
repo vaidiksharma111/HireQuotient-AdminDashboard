@@ -1,5 +1,5 @@
 .App {
-  max-width: 800px;
+  max-width: 90%;
   margin: auto;
   padding: 20px;
 }
@@ -9,11 +9,6 @@ body,html, * {
 }
 .App, .search-container, .data-table th, .data-table td, .pagination-container button, .pagination-container span {
   font-family: 'Poppins', sans-serif;
-}
-
-.search-container {
-  display: flex;
-  align-items: center; 
 }
 
 .search-container button {
@@ -28,6 +23,7 @@ body,html, * {
   width: 100%;
   border-collapse: collapse;
   margin-bottom: 20px;
+  border-radius: 8px;
 }
 
 .data-table th, .data-table td {
@@ -65,4 +61,31 @@ body,html, * {
 
 .pagination-container span {
   font-size: 16px;
+}
+
+#search {
+  border-radius: 2px;
+  border: 1px solid grey;
+}
+
+#icon-button {
+  float: right;
+}
+
+.search-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+#edit {
+  margin-right: 6px;
+}
+
+button {
+  background-color: white;
+  border: 1px solid #bbbbbb;
+  border-radius: 4px;
+  outline: none;
 }

@@ -1,6 +1,11 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
+import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
+
+
 
 function App() {
   const [data, setData] = useState([]);
@@ -97,12 +102,17 @@ function App() {
   return (
     <div className="App">
       <div className="search-container">
-        <input type="text" id="search" placeholder='Enter Value...' />
-        <button onClick={() => handleSearch()}>Search</button>
-        <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className="icon-button">
-          <i className="fas fa-trash-alt"></i>
+        <div className="search-group">
+          <input type="text" id="search" placeholder='Enter Value...' />
+          <button id='search' onClick={() => handleSearch()}>
+            <i className="fas fa-search"></i>
+          </button>
+        </div>
+        <button style={{background: selectedRows.length > 0 ? 'red' : 'pink'}} onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className="icon-button">
+          <FontAwesomeIcon icon={faTrashCan} style={{ color: 'white', fontSize: '1.5em' }} />
         </button>
       </div>
+
 
       <table className="data-table">
         <thead>
@@ -110,9 +120,9 @@ function App() {
             <th>
               <input type="checkbox" onChange={toggleSelectAll} checked={selectedRows.length === currentItems.length && selectedRows.length > 0} />
             </th>
-            <th>name</th>
-            <th>email</th>
-            <th>role</th>
+            <th>Name</th>
+            <th>Email</th>
+            <th>Role</th>
             <th>Actions</th>
           </tr>
         </thead>
@@ -157,11 +167,12 @@ function App() {
                   </button>
                 ) : (
                   <>
-                    <button onClick={() => handleEdit(dataObj.id)}>
-                      <i className="fas fa-edit"></i>
+                    <button id='edit' onClick={() => handleEdit(dataObj.id)}>
+                      {/* <i className="fas fa-edit"></i> */}
+                      <FontAwesomeIcon icon={faPenToSquare} style={{fontSize: '1.5em' }}  />
                     </button>
                     <button onClick={() => handleDelete(dataObj.id)}>
-                      <i className="fas fa-trash-alt"></i>
+                      <FontAwesomeIcon icon={faTrashCan} style={{ color: 'red', fontSize: '1.5em' }} />
                     </button>
                   </>
                 )}
@@ -172,12 +183,16 @@ function App() {
       </table>
 
       <div className="pagination-container">
-        <button onClick={() => handlePageChange(1)}><i className="fas fa-step-backward"></i></button>
-        <button onClick={() => handlePageChange(currentPage - 1)}><i className="fas fa-chevron-left"></i></button>
-        <span>{`Page ${currentPage} of ${totalPages}`}</span>
-        <button onClick={() => handlePageChange(currentPage + 1)}><i className="fas fa-chevron-right"></i></button>
-        <button onClick={() => handlePageChange(totalPages)}><i className="fas fa-step-forward"></i></button>
-
+        <div className="leftBtns">
+          <span>{selectedRows.length} of {filteredData.length} row(s) selected.</span>
+        </div>
+        <div className="rightBtns">
+          <button onClick={() => handlePageChange(1)}><i className="fas fa-step-backward"></i></button>
+          <button onClick={() => handlePageChange(currentPage - 1)}><i className="fas fa-chevron-left"></i></button>
+          <span>{`Page ${currentPage} of ${totalPages}`}</span>
+          <button onClick={() => handlePageChange(currentPage + 1)}><i className="fas fa-chevron-right"></i></button>
+          <button onClick={() => handlePageChange(totalPages)}><i className="fas fa-step-forward"></i></button>
+        </div>
       </div>
 
     </div>
