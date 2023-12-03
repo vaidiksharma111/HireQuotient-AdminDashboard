@@ -1,11 +1,6 @@
 import './App.css';
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faTrashCan } from '@fortawesome/free-regular-svg-icons';
-import { faPenToSquare } from '@fortawesome/free-regular-svg-icons';
-
-
 
 function App() {
   const [data, setData] = useState([]);
@@ -108,8 +103,8 @@ function App() {
             <i className="fas fa-search"></i>
           </button>
         </div>
-        <button style={{background: selectedRows.length > 0 ? 'red' : 'pink'}} onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className="icon-button">
-          <FontAwesomeIcon icon={faTrashCan} style={{ color: 'white', fontSize: '1.5em' }} />
+        <button onClick={handleDeleteSelected} disabled={selectedRows.length === 0} className="icon-button">
+          <i class="fa-regular fa-trash-can"></i>
         </button>
       </div>
 
@@ -167,12 +162,11 @@ function App() {
                   </button>
                 ) : (
                   <>
-                    <button id='edit' onClick={() => handleEdit(dataObj.id)}>
-                      {/* <i className="fas fa-edit"></i> */}
-                      <FontAwesomeIcon icon={faPenToSquare} style={{fontSize: '1.5em' }}  />
+                    <button id="edit" onClick={() => handleEdit(dataObj.id)}>
+                      <i className="fas fa-edit"></i>
                     </button>
                     <button onClick={() => handleDelete(dataObj.id)}>
-                      <FontAwesomeIcon icon={faTrashCan} style={{ color: 'red', fontSize: '1.5em' }} />
+                      <i class="fa-regular fa-trash-can"></i>
                     </button>
                   </>
                 )}
