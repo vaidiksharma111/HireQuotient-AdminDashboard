@@ -1,38 +1,68 @@
 .App {
-  text-align: center;
+  max-width: 800px;
+  margin: auto;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body,html, * {
+  font-family: 'Poppins', sans-serif;
+}
+.App, .search-container, .data-table th, .data-table td, .pagination-container button, .pagination-container span {
+  font-family: 'Poppins', sans-serif;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.search-container {
   display: flex;
-  flex-direction: column;
+  align-items: center; 
+}
+
+.search-container button {
+  margin-left: 10px; 
+}
+
+.search-container button:last-child i {
+  margin-left: auto; 
+}
+
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-bottom: 20px;
+}
+
+.data-table th, .data-table td {
+  border: 1px solid #ddd;
+  padding: 10px;
+  text-align: left;
+}
+
+.data-table th {
+  background-color: #f2f2f2;
+}
+
+.selected-row {
+  background-color: #e0e0e0;
+}
+
+.pagination-container {
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.pagination-container button {
+  padding: 10px;
+  margin: 0 5px; 
+  border: none;
+  cursor: pointer;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.pagination-container button:disabled {
+  background-color: #ddd;
+  cursor: not-allowed;
+}
+
+.pagination-container span {
+  font-size: 16px;
 }
